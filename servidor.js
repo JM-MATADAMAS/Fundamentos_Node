@@ -1,5 +1,6 @@
 import express from 'express';
 import bcrypt, { hash } from 'bcrypt';
+import cors from 'cors'
 import 'dotenv/config';
 import { initializeApp } from 'firebase/app';
 import { collection, deleteDoc, doc, getDoc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
@@ -16,8 +17,15 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
+
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+}
+
 const app = express();
 app.use(express.json());
+app.use(cors(corsOptions))
 
 app.get('/', (req, res) => {
     res.send('Respuesta de Raíz 😎');
