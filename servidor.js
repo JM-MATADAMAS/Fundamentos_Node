@@ -65,7 +65,7 @@ app.post('/signup', (req, res) => { // Cambiado de app.get a app.post para manej
                         setDoc(doc(usuarios, usuario), req.body)
                             .then(registered => {
                                 res.json({
-                                    'alerta': 'Success',
+                                    'Alerta': 'Success',
                                     registered
                                 });
                             });
